@@ -1,6 +1,51 @@
 # Technical_Challenge
 It contains 3 online Tech Challenge Folders
 
+# Challenge -1 ( AWS + Terraform )
+
+Need to set-up a 3 tier infrastructure in aws using Terraform.
+
+# Terraform: Deploy A Three-Tier Architecture in AWS
+
+
+Prerequisites : 
+
+      1) Install Terraform
+      2) Install the AWS CLI
+      3) Sign up for an AWS Account
+      4) Your preferred IDE (I used Atom Editor)
+
+Configuration of AWS credentials:
+
+Option -1
+
+Need to set the value of AWS_ACCESS_KEY & AWS_SECRET_KEY inside terraform.tfvars file.
+
+Option -2
+
+Before starting with Terraform you should have configured your credentials in the AWS folder in your system as shown below.
+[default]
+aws_access_key_id = 
+aws_secret_access_key = 
+[prod]
+aws_access_key_id =
+aws_secret_access_key =
+
+The name for the accounts can be anything you want but make sure that in the "main.tf" file that your are using the appropriate name for the profile when configuring.
+ 
+
+Three-tier :
+
+Three tier is industry standard for modern web application where we have 3 tiers for following
+
+WebServer tier (WebAPP tier): Prepares HTMLs by calling App tier
+Application tier (App tier): Prepare data by calling DB or other third party services
+Database tier (DB tier): Stores the data in database.
+
+
+
+
+
 # Challenge -2
 
 Need to write code that will query the meta data of instance within AWS.
