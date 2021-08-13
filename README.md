@@ -92,15 +92,21 @@ Have created security groups for
 WebServer Tier :
 
       Create a Application load balancer for web servers in public subnet
+      
       Create target groups for ALB  and add instances to that group
+      
       Creating a autoscaling group of instances for web servers [ubuntu/images/hvm-ssd/ubuntu-xenial-16.04-amd64-server-* ]
+      
       Launch the web servers in Public subnet
       
 Application Tier :
 
       Create a Application load balancer for Application servers in private subnet
+      
       Create target groups for ALB and add instances to that group
+      
       Creating a autoscaling group of instances for App servers [ubuntu/images/hvm-ssd/ubuntu-xenial-16.04-amd64-server-* ]
+      
       Launch the App servers in Private subnet
 
 Data Tier :
@@ -115,7 +121,9 @@ S3 bucket :
 For Demo purposes  I have used 
 
       Apache both on web servers & Application servers. 
+      
       app.sh - apache installation script for application server
+      
       web.sh - apache installation script for web server
 
 I have created one bastion host.
@@ -128,13 +136,13 @@ AMI :
 
 How to Provision Infrastructure :
 
-      Clone the git repository: $ git clone 
-      go to the "Challenge_1" directory and set variables in "terraform.tfvars" file:
-      Initialize the terraform from the terminal by executing  'terraform init' command
-      Run 'terraform fmt' . This ensures your formatting is correct and will modify the code for you to match.
-      Run 'terraform validate' to ensure there are no syntax errors.
-      Run 'terraform plan' to see what resources will be created.
-      Run terraform apply to create your infrastructure. 
+      1) Clone the git repository: $ git clone https://github.com/chinmayapalo/Technical_Challenge.git
+      2) go to the "Challenge_1" directory and set variables in "terraform.tfvars" file:
+      3) Initialize the terraform from the terminal by executing  'terraform init' command
+      4) Run 'terraform fmt' . This ensures your formatting is correct and will modify the code for you to match.
+      5) Run 'terraform validate' to ensure there are no syntax errors.
+      6) Run 'terraform plan' to see what resources will be created.
+      7) Run terraform apply to create your infrastructure. 
       
 Testing
 
