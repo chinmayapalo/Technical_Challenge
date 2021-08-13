@@ -204,6 +204,22 @@ python script files :
  Execution of the python script :
  
         Change directory to Challenge_3 folder & execute  python3 Test_case.py
+        
+ Testing
+ 
+      Test_case 01 : 
+           Input 
+            data : test_data1.json
+            key  : 'x/y/z'
+           
+           Output : value = a
+           
+      Test_case 02 : 
+           Input 
+            data : test_data2.json
+            key  : 'a/b/c'
+           
+           Output : value = d
 
 
   
