@@ -172,7 +172,9 @@ Environment Setup on server :
             
 Execution of the python script :
 
-Change directory to Challenge_2 folder & execute python3 Instance_Metadata.py
+      Change directory to Challenge_2 folder & execute the below command.
+      
+      python3 Instance_Metadata.py
 
 Note :  To query meta data of other AWS services , needs to update service_name="", region_name="" inside the client object.
 
@@ -205,7 +207,9 @@ python script files :
           
  Execution of the python script :
  
-        Change directory to Challenge_3 folder & execute  python3 Test_case.py
+        Change directory to Challenge_3 folder & execute the below command.
+        
+        python3 Test_case.py
         
  Testing
  
