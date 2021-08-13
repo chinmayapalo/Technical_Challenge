@@ -17,7 +17,7 @@ Prerequisites :
 
 Configuration of AWS credentials:
 
-Option -1
+Option -1 ( Set-up AWS_ACCESS_KEY & AWS_SECRET_KEY in terraform.tfvars )
 
       Need to set the value of AWS_ACCESS_KEY & AWS_SECRET_KEY inside terraform.tfvars file. 
       Uncommented the below codes inside provider module in main.tf , If the same has been commented.
@@ -25,17 +25,20 @@ Option -1
             secret_key = var.AWS_SECRET_KEY # AWS Secret Access Key
       Comment out profile    = "default" code
 
-Option -2
+Option -2 ( Set_up AWS profile in your system )
 
-Before starting with Terraform you should have configured your credentials in the AWS folder in your system as shown below.
-[default]
-aws_access_key_id = 
-aws_secret_access_key = 
-[prod]
-aws_access_key_id =
-aws_secret_access_key =
+      Before starting with Terraform you should have configured your credentials in the AWS folder in your system as shown below.
+      
+      [default]
+      aws_access_key_id = 
+      aws_secret_access_key = 
+      [prod]
+      aws_access_key_id =
+      aws_secret_access_key =
 
-The name for the accounts can be anything you want but make sure that in the "main.tf" file that your are using the appropriate name for the profile when configuring. 
+      The name for the accounts can be anything you want but make sure that in the "main.tf" file that your are using the appropriate name for the profile when 
+      configuring.
+      
       Comment out these codes ( access_key = var.AWS_ACCESS_KEY # AWS Access key & secret_key = var.AWS_SECRET_KEY # AWS Secret Access Key )
       Ues --> profile    = "default" code for profile based access.
             
@@ -45,9 +48,11 @@ Three-tier :
 
 Three tier is industry standard for modern web application where we have 3 tiers for following
 
-WebServer tier (WebAPP tier): Prepares HTMLs by calling App tier
-Application tier (App tier): Prepare data by calling DB or other third party services
-Database tier (DB tier): Stores the data in database.
+      WebServer tier (WebAPP tier): Prepares HTMLs by calling App tier
+      
+      Application tier (App tier): Prepare data by calling DB or other third party services
+      
+      Database tier (DB tier): Stores the data in database.
 
 Creating three architecture in AWS, I have used the below mentioned resources.
 
@@ -107,9 +112,11 @@ S3 bucket :
 
 For Demo purposes  I have used 
 
-      Apache both on web servers & Application servers
+      Apache both on web servers & Application servers. 
+      app.sh - apache installation script for application server
+      web.sh - apache installation script for web server
 
-I have created on bastion host.
+I have created one bastion host.
 
 AMI :
 
@@ -134,7 +141,7 @@ Testing
       
 Clean Up
 
-      To delete our infrastructure run t'erraform destroy' . This command will delete all the infrastructure that we created.
+      To delete our infrastructure run 'terraform destroy' . This command will delete all the infrastructure that we created.
 
 
 # Challenge -2
