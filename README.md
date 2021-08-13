@@ -53,7 +53,7 @@ Creating three architecture in AWS, I have used the below mentioned resources.
 
 Architecture overview :
 
-VPC
+VPC 
 
       Public subnet -  02 public subnets.  public_subnet_1 & public_subnet_2. These are for hosting public instances.
 
@@ -69,7 +69,7 @@ VPC
       
       Elastic Ip - 01 , Used for nat gateway
       
-      Nat gateway - 01 , ma pped with private route table
+      Nat gateway - 01 , mapped with private route table
       
 Security Groups :
 
@@ -82,33 +82,59 @@ Have created security groups for
             5) Database
             6) Bastion Host
 
+WebServer Tier :
+
+      Create a Application load balancer for web servers in public subnet
+      Create target groups for ALB  and add instances to that group
+      Creating a autoscaling group of instances for web servers [ubuntu/images/hvm-ssd/ubuntu-xenial-16.04-amd64-server-* ]
+      Launch the web servers in Public subnet
+      
+Application Tier :
+
+      Create a Application load balancer for Application servers in private subnet
+      Create target groups for ALB and add instances to that group
+      Creating a autoscaling group of instances for App servers [ubuntu/images/hvm-ssd/ubuntu-xenial-16.04-amd64-server-* ]
+      Launch the App servers in Private subnet
+
+Data Tier :
+
+      Create a RDS  with multi az feature inside private subnets.
+      
+S3 bucket :
+
+      Create a s3 bucket with a server side encryption & versioning enabled to store static contents , files.
 
 
-Create a Application load balancer for web servers
+For Demo purposes  I have used 
 
-Create target groups for ALB  and add instances to that group
+      Apache both on web servers & Application servers
 
-Creating a autoscaling group of instances for web servers [linux based either ubuntu or                         Redhat ]
+I have created on bastion host.
 
-Launch the web servers in Public Sunet
+AMI :
 
-Create a Application load balancer for Application servers
+       ubuntu/images/hvm-ssd/ubuntu-xenial-16.04-amd64-server-*  
+       virtualization-type = hvm
+       Root_device_type = ebs
 
-Create target groups for ALB and add instances to that group
+How to Provision Infrastructure :
 
-Creating a autoscaling group of instances for Application servers [Linux based either ubuntu or Redhat]
+      Clone the git repository: $ git clone 
+      go to the "Challenge_1" directory and set variables in "terraform.tfvars" file:
+      Initialize the terraform from the terminal by executing  'terraform init' command
+      Run 'terraform fmt' . This ensures your formatting is correct and will modify the code for you to match.
+      Run 'terraform validate' to ensure there are no syntax errors.
+      Run 'terraform plan' to see what resources will be created.
+      Run terraform apply to create your infrastructure. 
+      
+Testing
 
-Launch the Application servers in Private Subnet
+      Once infrastructure has been created there should be an Output displayed on your terminal with 'Web_Server_Load_Balancer_Endpoint= ' for the External ALB.
+      Please use the URL to access your applications.
+      
+Clean Up
 
-Create a RDS  with replication feature connected to application servers
-
-For Demo purposes  we will :
-
-use nginx on Web Servers
-
-Use Apache on Application Servers
-
-
+      To delete our infrastructure run t'erraform destroy' . This command will delete all the infrastructure that we created.
 
 
 # Challenge -2
