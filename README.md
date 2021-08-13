@@ -62,15 +62,15 @@ Architecture overview :
 
 VPC 
 
-      Public subnet -  02 public subnets.  public_subnet_1 & public_subnet_2. These are for hosting public instances.
+      Public subnet -  02 public subnets for hosting public instances.
 
-      Private Subnet - 02 Private subnets. private_subnet_1 & private_subnet_2. These are for hosting private instances.
+      Private Subnet - 02 Private subnets for hosting private instances.
       
-      bastion_subnet - 01 , For bastion host.
+      bastion_subnet - 01 , For bastion host. Have associated with bastion_rtb route table.
       
-      Public Route Table - 01 , public subnets have mapped with this route table.
+      Public Route Table - 01 , public subnets have associated with this route table.
       
-      Private Route Table - 01 , private subnets have mapped with this route table.
+      Private Route Table - 01 , private subnets have associated with this route table.
       
       Internet gateway - 01 , mapped with public route table
       
@@ -165,7 +165,9 @@ Environment Setup on server :
         3) Install boto3 --> pip3 install boto3
         4) Configure credentials of your AWS account on server by using awscli commands 
               Install awscli   --> pip3 install awscli
+              
               Configure Root / IAM user access-keys / credentials using :
+              
                   aws configure --profile root
                   aws configure --profile non-prod/IAM_user
 
@@ -176,7 +178,7 @@ Execution of the python script :
       
       python3 Instance_Metadata.py
 
-Note :  To query meta data of other AWS services , needs to update service_name="", region_name="" inside the client object.
+Note :  To query meta data of other AWS services , needs to update service_name="", region_name="" inside the client object. subsequently key's mentioned inside the for loop will also be changed.
 
 
 # Challenge -3
@@ -198,10 +200,10 @@ Environment Setup on server :
 python script files :
 
           1) Recursive.py --> Python function . 
-             Input parameters --> Nested Json object , key 
-             Output --> Value 
+                   Input parameters --> Nested Json object , key 
+                   Output --> Value 
 
-          2) Test_case.py --> Unittest python script file which has the test cases for validating Recursive.py
+          2) Test_case.py --> Unittest python script file which has the test cases for testing Recursive.py function.
 
           3) Sample Data file for testing purpose --> test_data1.json , test_data2.json
           
@@ -215,17 +217,17 @@ python script files :
  
       Test_case 01 : 
            Input 
-            data : test_data1.json
-            key  : 'x/y/z'
+            Nested Obj : test_data1.json
+            key        : 'x/y/z'
            
-           Output : value = a
+            Output      : value = a
            
       Test_case 02 : 
            Input 
-            data : test_data2.json
-            key  : 'a/b/c'
+            Nested Obj : test_data2.json
+            key        : 'a/b/c'
            
-           Output : value = d
+            Output : value = d
 
 
   
