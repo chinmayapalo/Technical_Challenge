@@ -19,7 +19,11 @@ Configuration of AWS credentials:
 
 Option -1
 
-Need to set the value of AWS_ACCESS_KEY & AWS_SECRET_KEY inside terraform.tfvars file.
+      Need to set the value of AWS_ACCESS_KEY & AWS_SECRET_KEY inside terraform.tfvars file. 
+      Uncommented the below codes inside provider module in main.tf , If the same has been commented.
+            access_key = var.AWS_ACCESS_KEY # AWS Access key
+            secret_key = var.AWS_SECRET_KEY # AWS Secret Access Key
+      Comment out profile    = "default" code
 
 Option -2
 
@@ -31,7 +35,10 @@ aws_secret_access_key =
 aws_access_key_id =
 aws_secret_access_key =
 
-The name for the accounts can be anything you want but make sure that in the "main.tf" file that your are using the appropriate name for the profile when configuring.
+The name for the accounts can be anything you want but make sure that in the "main.tf" file that your are using the appropriate name for the profile when configuring. 
+      Comment out these codes ( access_key = var.AWS_ACCESS_KEY # AWS Access key & secret_key = var.AWS_SECRET_KEY # AWS Secret Access Key )
+      Ues --> profile    = "default" code for profile based access.
+            
  
 
 Three-tier :
@@ -42,6 +49,64 @@ WebServer tier (WebAPP tier): Prepares HTMLs by calling App tier
 Application tier (App tier): Prepare data by calling DB or other third party services
 Database tier (DB tier): Stores the data in database.
 
+Creating three architecture in AWS, I have used the below mentioned resources.
+
+Architecture overview :
+
+VPC
+
+      Public subnet -  02 public subnets.  public_subnet_1 & public_subnet_2. These are for hosting public instances.
+
+      Private Subnet - 02 Private subnets. private_subnet_1 & private_subnet_2. These are for hosting private instances.
+      
+      bastion_subnet - 01 , For bastion host.
+      
+      Public Route Table - 01 , public subnets have mapped with this route table.
+      
+      Private Route Table - 01 , private subnets have mapped with this route table.
+      
+      Internet gateway - 01 , mapped with public route table
+      
+      Elastic Ip - 01 , Used for nat gateway
+      
+      Nat gateway - 01 , ma pped with private route table
+      
+Security Groups :
+
+Have created security groups for 
+      
+            1) External ALB
+            2) Web server instances
+            3) Internal ALB
+            4) Application server instances
+            5) Database
+            6) Bastion Host
+
+
+
+Create a Application load balancer for web servers
+
+Create target groups for ALB  and add instances to that group
+
+Creating a autoscaling group of instances for web servers [linux based either ubuntu or                         Redhat ]
+
+Launch the web servers in Public Sunet
+
+Create a Application load balancer for Application servers
+
+Create target groups for ALB and add instances to that group
+
+Creating a autoscaling group of instances for Application servers [Linux based either ubuntu or Redhat]
+
+Launch the Application servers in Private Subnet
+
+Create a RDS  with replication feature connected to application servers
+
+For Demo purposes  we will :
+
+use nginx on Web Servers
+
+Use Apache on Application Servers
 
 
 
