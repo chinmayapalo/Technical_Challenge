@@ -90,6 +90,21 @@ resource "aws_nat_gateway" "ngw" {
   }
 }
 
+# Route Table for bastion subnets
+resource "aws_route_table" "bastion_rtb" {
+  vpc_id = aws_vpc.main.id
+  route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = aws_internet_gateway.igw.id
+  }
+
+
+  tags = {
+    Name = "${var.PROJECT_NAME}-bastion_rtb"
+  }
+}
+
+
 # Route Table for public subnets
 resource "aws_route_table" "public_rtb" {
   vpc_id = aws_vpc.main.id
@@ -115,6 +130,12 @@ resource "aws_route_table" "private_rtb" {
   tags = {
     Name = "${var.PROJECT_NAME}-private-route-table"
   }
+}
+
+# Route Table association with bastion subnets
+resource "aws_route_table_association" "to_bastion_subnet" {
+  subnet_id      = aws_subnet.bastion_subnet.id
+  route_table_id = aws_route_table.bastion_rtb.id
 }
 
 # Route Table association with public subnets

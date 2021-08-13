@@ -1,9 +1,9 @@
 resource "aws_s3_bucket" "my_bucket" {
   bucket = "${var.PROJECT_NAME}-S3-bucket"
   tags = {
-    Name        = "${var.PROJECT_NAME}-S3-bucket"
+    Name = "${var.PROJECT_NAME}-S3-bucket"
   }
-  acl    = "private"
+  acl = "private"
   versioning {
     enabled = true
   }
@@ -11,7 +11,7 @@ resource "aws_s3_bucket" "my_bucket" {
   server_side_encryption_configuration {
     rule {
       apply_server_side_encryption_by_default {
-        sse_algorithm     = "AES256"
+        sse_algorithm = "AES256"
       }
     }
   }
