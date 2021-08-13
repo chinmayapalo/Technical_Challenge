@@ -2,8 +2,8 @@
 PROJECT_NAME = "demo"
 
 # Varibles for the Providers
-AWS_ACCESS_KEY = "AKIAQWF2DVJVTCSMPS4P"
-AWS_SECRET_KEY = "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"
+AWS_ACCESS_KEY = ""
+AWS_SECRET_KEY = ""
 AWS_REGION     = "ap-south-1"
 
 # AWS_AMI_VARIABLE
