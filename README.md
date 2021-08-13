@@ -1,5 +1,5 @@
 # Technical_Challenge
-It contains 3 online Tech Challenge Folders
+It contains solutions for all 3 Tech Challenges which have been mentioned in document.
 
 # Challenge -1 ( AWS + Terraform )
 
