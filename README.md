@@ -17,13 +17,15 @@ Prerequisites :
 
 Configuration of AWS credentials:
 
-Option -1 ( Set-up AWS_ACCESS_KEY & AWS_SECRET_KEY in terraform.tfvars )
+Option -1 (  Using terraform.tfvars file )
 
       Need to set the value of AWS_ACCESS_KEY & AWS_SECRET_KEY inside terraform.tfvars file. 
-      Uncommented the below codes inside provider module in main.tf , If the same has been commented.
+      
+      Please uncomment the below mentioned codes in main.tf , If the same has already commented.
             access_key = var.AWS_ACCESS_KEY # AWS Access key
             secret_key = var.AWS_SECRET_KEY # AWS Secret Access Key
-      Comment out profile    = "default" code
+            
+      Comment the code ( profile    = "default" ) in main.tf
 
 Option -2 ( Set_up AWS profile in your system )
 
@@ -39,9 +41,9 @@ Option -2 ( Set_up AWS profile in your system )
       The name for the accounts can be anything you want but make sure that in the "main.tf" file that your are using the appropriate name for the profile when 
       configuring.
       
-      Comment out these codes ( access_key = var.AWS_ACCESS_KEY # AWS Access key & secret_key = var.AWS_SECRET_KEY # AWS Secret Access Key )
-      Ues --> profile    = "default" code for profile based access.
-            
+      Comment  these codes [ access_key = var.AWS_ACCESS_KEY  & secret_key = var.AWS_SECRET_KEY ] inside main.tf file 
+      
+      Update profile value [ profile    = "default"  ] in main.tf code for profile based access.
  
 
 Three-tier :
